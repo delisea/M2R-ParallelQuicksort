@@ -149,7 +149,11 @@ Well, this is not particularly nice and some may not know/like R.
 *** A simple plot with gnuplot
 So let's try to parse in an other way and use gnuplot:
 
-random test on all test
+Randomise les tests à faire:
+Les test sont indiqué en paramètre (syntaxe: ./script/test.sh 1000 2000 3000 ...)
+Créer une case de tableau 2D pour chaque type de test
+Choisi aléatoirement un test et l'éxecute
+État final: Le tableau est rempli de $ma (nombre de test à faire par type, défini ici à 5)
 #+begin_src perl :results output raw :exports both :tangle scripts/mkdir -p $OUTPUT_DIRECTORY
 TOUTPUT_FILE=$OUTPUT_DIRECTORY/measurements_`date +%R`
 OUTPUT_FILE=$TOUTPUT_FILE.txt
