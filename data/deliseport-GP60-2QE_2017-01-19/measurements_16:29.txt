@@ -1,0 +1,180 @@
+Size: 1600
+Sequential quicksort took: 0.000874 sec.
+Parallel quicksort took: 0.095714 sec.
+Built-in quicksort took: 0.000221 sec.
+Size: 700
+Sequential quicksort took: 0.000092 sec.
+Parallel quicksort took: 0.067616 sec.
+Built-in quicksort took: 0.000099 sec.
+Size: 100
+Sequential quicksort took: 0.000009 sec.
+Parallel quicksort took: 0.027331 sec.
+Built-in quicksort took: 0.000013 sec.
+Size: 2200
+Sequential quicksort took: 0.000325 sec.
+Parallel quicksort took: 0.117445 sec.
+Built-in quicksort took: 0.000318 sec.
+Size: 2500
+Sequential quicksort took: 0.000333 sec.
+Parallel quicksort took: 0.097718 sec.
+Built-in quicksort took: 0.000337 sec.
+Size: 2500
+Sequential quicksort took: 0.000328 sec.
+Parallel quicksort took: 0.143353 sec.
+Built-in quicksort took: 0.000389 sec.
+Size: 100
+Sequential quicksort took: 0.000010 sec.
+Parallel quicksort took: 0.024764 sec.
+Built-in quicksort took: 0.000012 sec.
+Size: 1300
+Sequential quicksort took: 0.000169 sec.
+Parallel quicksort took: 0.090386 sec.
+Built-in quicksort took: 0.000179 sec.
+Size: 1600
+Sequential quicksort took: 0.000216 sec.
+Parallel quicksort took: 0.052307 sec.
+Built-in quicksort took: 0.000226 sec.
+Size: 2200
+Sequential quicksort took: 0.000282 sec.
+Parallel quicksort took: 0.129320 sec.
+Built-in quicksort took: 0.000306 sec.
+Size: 1900
+Sequential quicksort took: 0.000234 sec.
+Parallel quicksort took: 0.108899 sec.
+Built-in quicksort took: 0.000380 sec.
+Size: 100
+Sequential quicksort took: 0.000011 sec.
+Parallel quicksort took: 0.025914 sec.
+Built-in quicksort took: 0.000012 sec.
+Size: 400
+Sequential quicksort took: 0.000046 sec.
+Parallel quicksort took: 0.048399 sec.
+Built-in quicksort took: 0.000051 sec.
+Size: 100
+Sequential quicksort took: 0.000010 sec.
+Parallel quicksort took: 0.021572 sec.
+Built-in quicksort took: 0.000012 sec.
+Size: 2500
+Sequential quicksort took: 0.000435 sec.
+Parallel quicksort took: 0.114663 sec.
+Built-in quicksort took: 0.000355 sec.
+Size: 100
+Sequential quicksort took: 0.000009 sec.
+Parallel quicksort took: 0.027736 sec.
+Built-in quicksort took: 0.000012 sec.
+Size: 1000
+Sequential quicksort took: 0.000125 sec.
+Parallel quicksort took: 0.088084 sec.
+Built-in quicksort took: 0.000123 sec.
+Size: 400
+Sequential quicksort took: 0.000044 sec.
+Parallel quicksort took: 0.066830 sec.
+Built-in quicksort took: 0.000057 sec.
+Size: 1600
+Sequential quicksort took: 0.000196 sec.
+Parallel quicksort took: 0.093957 sec.
+Built-in quicksort took: 0.000227 sec.
+Size: 1900
+Sequential quicksort took: 0.000244 sec.
+Parallel quicksort took: 0.118371 sec.
+Built-in quicksort took: 0.000274 sec.
+Size: 1600
+Sequential quicksort took: 0.000196 sec.
+Parallel quicksort took: 0.081552 sec.
+Built-in quicksort took: 0.000228 sec.
+Size: 400
+Sequential quicksort took: 0.000048 sec.
+Parallel quicksort took: 0.069666 sec.
+Built-in quicksort took: 0.000058 sec.
+Size: 1900
+Sequential quicksort took: 0.000270 sec.
+Parallel quicksort took: 0.121604 sec.
+Built-in quicksort took: 0.000274 sec.
+Size: 1000
+Sequential quicksort took: 0.000115 sec.
+Parallel quicksort took: 0.093001 sec.
+Built-in quicksort took: 0.000141 sec.
+Size: 1300
+Sequential quicksort took: 0.000163 sec.
+Parallel quicksort took: 0.092793 sec.
+Built-in quicksort took: 0.000182 sec.
+Size: 1300
+Sequential quicksort took: 0.000181 sec.
+Parallel quicksort took: 0.092135 sec.
+Built-in quicksort took: 0.000243 sec.
+Size: 2200
+Sequential quicksort took: 0.000289 sec.
+Parallel quicksort took: 0.095375 sec.
+Built-in quicksort took: 0.000320 sec.
+Size: 1300
+Sequential quicksort took: 0.000163 sec.
+Parallel quicksort took: 0.119744 sec.
+Built-in quicksort took: 0.000184 sec.
+Size: 400
+Sequential quicksort took: 0.000047 sec.
+Parallel quicksort took: 0.052446 sec.
+Built-in quicksort took: 0.000058 sec.
+Size: 2200
+Sequential quicksort took: 0.000318 sec.
+Parallel quicksort took: 0.129139 sec.
+Built-in quicksort took: 0.000319 sec.
+Size: 400
+Sequential quicksort took: 0.000045 sec.
+Parallel quicksort took: 0.052814 sec.
+Built-in quicksort took: 0.000053 sec.
+Size: 1000
+Sequential quicksort took: 0.000125 sec.
+Parallel quicksort took: 0.095058 sec.
+Built-in quicksort took: 0.000139 sec.
+Size: 2500
+Sequential quicksort took: 0.000335 sec.
+Parallel quicksort took: 0.114808 sec.
+Built-in quicksort took: 0.000366 sec.
+Size: 1300
+Sequential quicksort took: 0.000158 sec.
+Parallel quicksort took: 0.114424 sec.
+Built-in quicksort took: 0.000164 sec.
+Size: 700
+Sequential quicksort took: 0.000077 sec.
+Parallel quicksort took: 0.118207 sec.
+Built-in quicksort took: 0.000099 sec.
+Size: 1600
+Sequential quicksort took: 0.000196 sec.
+Parallel quicksort took: 0.081898 sec.
+Built-in quicksort took: 0.000261 sec.
+Size: 2200
+Sequential quicksort took: 0.000362 sec.
+Parallel quicksort took: 0.184722 sec.
+Built-in quicksort took: 0.000301 sec.
+Size: 700
+Sequential quicksort took: 0.000078 sec.
+Parallel quicksort took: 0.103985 sec.
+Built-in quicksort took: 0.000088 sec.
+Size: 1900
+Sequential quicksort took: 0.000237 sec.
+Parallel quicksort took: 0.105897 sec.
+Built-in quicksort took: 0.000247 sec.
+Size: 2500
+Sequential quicksort took: 0.000318 sec.
+Parallel quicksort took: 0.062700 sec.
+Built-in quicksort took: 0.000309 sec.
+Size: 1900
+Sequential quicksort took: 0.000233 sec.
+Parallel quicksort took: 0.138830 sec.
+Built-in quicksort took: 0.000268 sec.
+Size: 1000
+Sequential quicksort took: 0.000117 sec.
+Parallel quicksort took: 0.117330 sec.
+Built-in quicksort took: 0.000122 sec.
+Size: 1000
+Sequential quicksort took: 0.000118 sec.
+Parallel quicksort took: 0.122326 sec.
+Built-in quicksort took: 0.000122 sec.
+Size: 700
+Sequential quicksort took: 0.000077 sec.
+Parallel quicksort took: 0.088138 sec.
+Built-in quicksort took: 0.000085 sec.
+Size: 700
+Sequential quicksort took: 0.000077 sec.
+Parallel quicksort took: 0.083833 sec.
+Built-in quicksort took: 0.000099 sec.
