@@ -231,6 +231,7 @@ for i in $@; do
 done
 #+end_src
 
+Affichage des résultats sur des graphes:
 #+begin_src sh :results output raw :exports both 
 echo "
   set terminal png size 600,400 
@@ -244,11 +245,14 @@ echo [[file:${FILENAME}_wide.png]]
 #+end_src
 
 #+RESULTS:
+Test petites valeurs
 [[file:data/deliseport-GP60-2QE_2017-01-20/measurements_08:18_wide.png]]
+Test moyennes valeurs
 [[file:data/deliseport-GP60-2QE_2017-01-20/measurements_08:30_wide.png]]
+Test grande valeurs
 [[file:data/deliseport-GP60-2QE_2017-01-20/measurements_08:32_wide.png]]
+Test très grandes valeurs
 [[file:data/deliseport-GP60-2QE_2017-01-20/measurements_08:20_wide.png]]
 
-Well, I'm not sure it is nicer but I have lines. A first crude
-analysis seems to reveal the the parallel version is worth it for
-arrays larger than 400000.
+
+On peut voir que les performances sur des petites et moyennes valeurs sont beaucoup moins efficace pour la version parallèle. Mais à partir de 1500000 valeurs les performances très vite sont beaucoup plus éfficaces pour cette dernière jusque 60% du temps des autres algorythme à partir de 10^7.
