@@ -19,8 +19,8 @@ This is where raw experimental data should go. Each directory entry
 comprises a set of experiments and the directory name is based on the
 machine name and on the date.
 
-*** A simple plot with gnuplot
-So let's try to parse in an other way and use gnuplot:
+
+** Générateur de test aléatoire
 
 Randomise les tests à faire:
 Les test sont indiqué en paramètre (syntaxe: ./script/test.sh 1000 2000 3000 ...)
@@ -93,6 +93,8 @@ perl scripts/csv_quicksort_extractor2.pl < "$FILENAME.txt" > "${FILENAME}_wide.c
 sort -k1n,1n "${FILENAME}_wide.csv" > "${FILENAME}_wide_sorted.csv"
 #+end_src
 
+
+* Un meilleur indice de visualisation: la moyenne
 Calcule des valeurs moyennes:
 (On récupère les lignes commençant par "$VALTEST," (ex:1000,) avec sed puis on calcul les moyennes par lignes avec la commande awk).
 #+begin_src perl :results output raw :exports both :tangle scripts/
@@ -109,6 +111,8 @@ for i in $@; do
 done
 #+end_src
 
+
+*** A simple plot with gnuplot
 Affichage des résultats sur des graphes:
 #+begin_src sh :results output raw :exports both 
 echo "
@@ -121,7 +125,6 @@ echo "
 
 echo [[file:${FILENAME}_wide.png]]
 #+end_src
-
 
 Test petites valeurs
 #+RESULTS:
