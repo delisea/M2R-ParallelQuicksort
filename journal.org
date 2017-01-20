@@ -149,36 +149,77 @@ Well, this is not particularly nice and some may not know/like R.
 *** A simple plot with gnuplot
 So let's try to parse in an other way and use gnuplot:
 
-#+begin_src perl :results output raw :exports both :tangle scripts/csv_quicksort_extractor2.pl
-  use strict;
+random test on all test
+#+begin_src perl :results output raw :exports both :tangle scripts/mkdir -p $OUTPUT_DIRECTORY
+TOUTPUT_FILE=$OUTPUT_DIRECTORY/measurements_`date +%R`
+OUTPUT_FILE=$TOUTPUT_FILE.txt
 
-  my($line);
-  my($size);
-  my($seq,$par,$libc);
-  print "Size, Seq, Par, Libc\n" ;
-  while($line=<>) {
-      chomp $line;
-      if($line =~/^Size: ([\d\.]*)$/) {
-          $size = $1;
-          next;
-      } 
-      if($line =~/^Sequential quicksort.*: ([\d\.]*) sec.$/) {
-          $seq=$1; next;
-      } 
-      if($line =~/^Parallel quicksort.*: ([\d\.]*) sec.$/) {
-          $par=$1; next;
-      } 
-      if($line =~/^Built-in quicksort.*: ([\d\.]*) sec.$/) {
-          $libc=$1; 
-          print "$size, $seq, $pqr, $libc\n";
-          next;
-      }
-  }
+touch $OUTPUT_FILE
+
+
+declare -A tes
+declare -A tit
+let "j = 0"
+for i in $@; do
+	 tit[${j}]=${i}
+	 tes[${j}]=0
+	 let "j = $j + 1"
+done
+
+
+let "ma = 5"
+let "si = j"
+let "len = j - 1"
+
+let "k = $ma * $j"
+while [ $k -ne 0 ]; do
+
+# choix du test aléatoirement
+let "val = $RANDOM % $si"
+let "i = 0"
+while [ $val -ne 0 ]; do
+	if [ ${tes[${i}]} -ne $ma ]
+	then
+		let "val = $val - 1"
+	fi
+
+	if [ ${i} -eq $len ]
+   then
+		let "i = 0"
+	else
+		let "i = i + 1"
+	fi
+done
+	# on prends le premier valide
+	while [ ${tes[${i}]} -eq $ma ]; do
+		if [ ${i} -eq $len ]
+		then
+			let "i = 0"
+		else
+			let "i = i + 1"
+		fi
+	done
+
+	echo "Size: ${tit[${i}]}" >> $OUTPUT_FILE;
+        ./src/parallelQuicksort ${tit[${i}]} >> $OUTPUT_FILE;
+
+
+	let "tes[${i}] = ${tes[${i}]} + 1"
+	let "k = k - 1"
+done
+#+end_src
+
+compute file data
+#+begin_src perl :results output raw :exports both :tangle scripts/FILENAME=$TOUTPUT_FILE
+perl scripts/csv_quicksort_extractor2.pl < "$FILENAME.txt" > "${FILENAME}_wide.csv"
+
+sort -k1n,1n "${FILENAME}_wide.csv" > "${FILENAME}_wide_sorted.csv"
 #+end_src
 
 #+begin_src perl :results output raw :exports both :tangle scripts/
 echo Size, Seq, Par, Libc > "${FILENAME}_wide_mean.csv"
 
+moyennes
 declare -A mean
 for i in $@; do
 	 sed -n -e "/^$i,/p" "${FILENAME}_wide.csv" > "data/t.csv"
@@ -186,7 +227,6 @@ for i in $@; do
 	mean[0]=$(awk '{ total += $2 } END { print total/NR }' 'data/t.csv')
 	mean[1]=$(awk '{ total += $3 } END { print total/NR }' 'data/t.csv')
 	mean[2]=$(awk '{ total += $4 } END { print total/NR }' 'data/t.csv')
-	#echo $i, ${mean[0]}, ${mean[1]}, ${mean[2]}
 	echo $i, ${mean[0]}, ${mean[1]}, ${mean[2]} >> "${FILENAME}_wide_mean.csv"
 done
 #+end_src
