@@ -6,7 +6,7 @@ OUTPUT_FILE=$TOUTPUT_FILE.txt
 
 touch $OUTPUT_FILE
 
-
+let "randy = $(./scripts/rand 42)"
 declare -A tes
 declare -A tit
 let "j = 0"
@@ -28,7 +28,8 @@ let "k = $ma * $j"
 while [ $k -ne 0 ]; do
 
 # choix du test aléatoirement
-let "val = $RANDOM % $si"
+let "randy = $(./scripts/rand $randy)"
+let "val = $randy % $si"
 let "i = 0"
 while [ $val -ne 0 ]; do
 	if [ ${tes[${i}]} -ne $ma ]
