@@ -276,6 +276,6 @@ Ici le point de croisement des courbes se situe aux alentours de 300000 mais il 
 Sur cette machine une fois encore les performmances sur de petites tableaux sont moins bonnes pour la version parrallêle mais meilleures pour de grands tableaux. La hiérarchie s'inverse entre 300000 et 500000 valeurs, le parallel quicksort devient alors plus performant.
 
 
-*** Machine comparison
+** Comparaison des performances en fonction des machines
 La Machine avec plus de coeur profite plus rapidement du parrallèlisme puisque le seuil d'inversion est à 400000 au lieu de 1000000, mais étonnamment, on observe que pour les très hautes valeurs la machine 2 est plus rapide (1.5s) contre environ (1.7s) pour la machine 1 ce qui est étrange puisque la machine 1 possède deux fois plus de coeur que la machine 2. Rappelons que la machine 1 possède 8GB de RAM contre 4GB pour la machine 2, et que le processeur est un Intel i7 contre un Intel i5. Il y a donc des paramètres autres qui entre en compte. Ici, il s'agit probablement du système d'exploitation. Kali Linux et Ubuntu peuvent gérer différemment leurs ressources. Quoiqu'il en soit, la conclusion générale sur cette algorithme reste inchangée :
 L'algorithme ParallelQuicksort est beaucoup moins performant pour de petites valeurs mais plus performant pour de grandes valeurs, le seuil où les performances s'inversent entre les algorithme dépend cependant des machines et des conditions dans lesquels ces tests sont réalisés.
