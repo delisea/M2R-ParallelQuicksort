@@ -40,13 +40,20 @@ uname -a
 #+RESULTS:
 : Linux Machine 4.6.0-kali1-amd64 #1 SMP Debian 4.6.4-1kali1 (2016-07-21) x86_64 GNU/Linux
 
-#+begin_src
+
+#+begin_src sh :results output raw :exports both 
 cat /proc/meminfo > Infos/Machine/meminfo.txt
 #+end_src
 
-#+begin_src
+#+RESULTS:
+[[file:Infos/Machine/meminfo.txt]]
+
+#+begin_src sh :results output raw :exports both 
 cat /proc/cpuinfo > Infos/Machine/cpuinfo.txt
 #+end_src
+
+#+RESULTS:
+[[file:Infos/Machine/cpuinfo.txt]]
 
 #+begin_src sh :results output :exports both 
 gcc --version
@@ -77,13 +84,19 @@ uname -a
 #+RESULTS:
 : Linux deliseport-GP60-2QE 4.4.0-53-generic #74-Ubuntu SMP Fri Dec 2 15:59:10 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
 
-#+begin_src
+#+begin_src sh :results output raw :exports both
 cat /proc/meminfo > Infos/deliseport-FP60-2QE/meminfo.txt
 #+end_src
 
-#+begin_src
+#+RESULTS:
+[[file:Infos/deliseport-FP60-2QE/meminfo.txt]]
+
+#+begin_src sh :results output raw :exports both 
 cat /proc/cpuinfo > Infos/deliseport-FP60-2QE/cpuinfo.txt
 #+end_src
+
+#+RESULTS:
+[[file:Infos/deliseport-FP60-2QE/cpuinfo.txt]]
 
 #+begin_src sh :results output :exports both 
 gcc --version
@@ -204,7 +217,37 @@ done
 #+end_src
 
 
-*** A simple plot with gnuplot
+*** A simple plot with gnuplot Machine 1
+Affichage des résultats sur des graphes:
+#+begin_src sh :results output raw :exports both 
+echo "
+  set terminal png size 600,400 
+  set output '${FILENAME}_wide.png'
+  set datafile separator ','
+  set key autotitle columnhead
+	plot '${FILENAME}_wide_mean.csv' using 1:2 with linespoints, '' using 1:3 with linespoints, '' using 1:4 with linespoints, '${FILENAME}_wide_sorted.csv' using 1:2, '' using 1:3, '' using 1:4
+" | gnuplot
+
+echo [[file:${FILENAME}_wide.png]]
+#+end_src
+
+Test petites valeurs
+#+RESULTS:
+[[file:data/Machine_2017-02-02/measurements_17:44_wide.png]]
+Test moyennes valeurs
+#+RESULTS:
+[[file:data/Machine_2017-02-02/measurements_17:51_wide.png]]
+Test grande valeurs
+#+RESULTS:
+[[file:data/Machine_2017-02-02/measurements_17:46_wide.png]]
+Test très grandes valeurs
+#+RESULTS:
+[[file:data/Machine_2017-02-02/measurements_17:48_wide.png]]
+
+
+On peut voir que les performances sur des petites et moyennes valeurs sont beaucoup moins efficace pour la version parallèle. Mais à partir de 1500000 valeurs les performances très vite sont beaucoup plus éfficaces pour cette dernière jusque 60% du temps des autres algorythme à partir de 10^7.
+
+*** A simple plot with gnuplot Machine 2
 Affichage des résultats sur des graphes:
 #+begin_src sh :results output raw :exports both 
 echo "
