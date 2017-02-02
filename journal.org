@@ -236,13 +236,13 @@ Test petites valeurs
 [[file:data/Machine_2017-02-02/measurements_17:44_wide.png]]
 Test moyennes valeurs
 #+RESULTS:
-[[file:data/deliseport-GP60-2QE_2017-01-20/measurements_08:30_wide.png]]
+[[file:data/Machine_2017-02-02/measurements_17:51_wide.png]]
 Test grande valeurs
 #+RESULTS:
 [[file:data/Machine_2017-02-02/measurements_17:46_wide.png]]
 Test très grandes valeurs
 #+RESULTS:
-[[file:data/deliseport-GP60-2QE_2017-01-20/measurements_08:20_wide.png]]
+[[file:data/Machine_2017-02-02/measurements_17:48_wide.png]]
 
 
 On peut voir que les performances sur des petites et moyennes valeurs sont beaucoup moins efficace pour la version parallèle. Mais à partir de 1500000 valeurs les performances très vite sont beaucoup plus éfficaces pour cette dernière jusque 60% du temps des autres algorythme à partir de 10^7.
