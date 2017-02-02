@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #+STARTUP: overview indent inlineimages
 #+TITLE:       Laboratory Notebook for a Multi-Threaded Version of Quicksort
-#+AUTHOR:      Antoine Delise
+#+AUTHOR:      Hugo Amodru-Favin, Antoine Delise
 #+LANGUAGE:    fr
 #+TAGS: IMPORTANT(i) TEST(t) DEPRECATED(d) noexport(n)
 
@@ -18,80 +18,103 @@ Makefile to compile it.
 This is where raw experimental data should go. Each directory entry
 comprises a set of experiments and the directory name is based on the
 machine name and on the date.
+* Expérimentation
+** Présentation de notre étude
+Pour observer l'impact du matériel et du système d'exploitation sur les performances du quicksort. Nos deux machines ne tournent pas sur le même système d'exploitation, ont un processeur et une ram différentes.
+Dans un premier temps, nous effectuerons la même expérience sur les deux machines différentes. On analysera les résultats obtenus indépendemment de la machine avant de les comparer pour conclure sur les performances machines.
 
-** info/
+Nous commencons d'abord par réaliser un make du programme de base du quicksort :
+#+begin_src
+./src/make
+#+end_src
 
-PROCO
+** Informations Machines
+Présentation des 2 machines de tests utilisées : OS, CPU, Mémoire, Version du compilateur GCC.
 
+*** Machine 1 (Hugo Amodru-Favin)
+
+#+begin_src sh :results output :exports both 
 uname -a
-Linux deliseport-GP60-2QE 4.4.0-53-generic #74-Ubuntu SMP Fri Dec 2 15:59:10 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+#+end_src
 
+#+RESULTS:
+: Linux Machine 4.6.0-kali1-amd64 #1 SMP Debian 4.6.4-1kali1 (2016-07-21) x86_64 GNU/Linux
 
+#+begin_src
+cat /proc/meminfo > Infos/Machine/meminfo.txt
+#+end_src
 
-cat /proc/meminfo
-MemTotal:        3963440 kB
-MemFree:          237096 kB
-MemAvailable:    1141692 kB
-Buffers:          154264 kB
-Cached:           940616 kB
-SwapCached:         2032 kB
-Active:          2087652 kB
-Inactive:        1231500 kB
-Active(anon):    1549368 kB
-Inactive(anon):   743524 kB
-Active(file):     538284 kB
-Inactive(file):   487976 kB
-Unevictable:          56 kB
-Mlocked:              56 kB
-SwapTotal:       3998204 kB
-SwapFree:        3979788 kB
-Dirty:              2544 kB
-Writeback:             0 kB
-AnonPages:       2218212 kB
-Mapped:           282388 kB
-Shmem:             68620 kB
-Slab:             268736 kB
-SReclaimable:     164424 kB
-SUnreclaim:       104312 kB
-KernelStack:        9728 kB
-PageTables:        41104 kB
-NFS_Unstable:          0 kB
-Bounce:                0 kB
-WritebackTmp:          0 kB
-CommitLimit:     5979924 kB
-Committed_AS:    6837664 kB
-VmallocTotal:   34359738367 kB
-VmallocUsed:           0 kB
-VmallocChunk:          0 kB
-HardwareCorrupted:     0 kB
-AnonHugePages:    626688 kB
-CmaTotal:              0 kB
-CmaFree:               0 kB
-HugePages_Total:       0
-HugePages_Free:        0
-HugePages_Rsvd:        0
-HugePages_Surp:        0
-Hugepagesize:       2048 kB
-DirectMap4k:      281588 kB
-DirectMap2M:     3829760 kB
-DirectMap1G:           0 kB
+#+begin_src
+cat /proc/cpuinfo > Infos/Machine/cpuinfo.txt
+#+end_src
 
-
+#+begin_src sh :results output :exports both 
 gcc --version
-gcc (Ubuntu 5.4.0-6ubuntu1~16.04.4) 5.4.0 20160609
-Copyright (C) 2015 Free Software Foundation, Inc.
-This is free software; see the source for copying conditions.  There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#+end_src
 
+#+RESULTS:
+: gcc (Debian 6.2.0-10) 6.2.0 20161027
+: Copyright (C) 2016 Free Software Foundation, Inc.
+: This is free software; see the source for copying conditions.  There is NO
+: warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
+Test simple du quicksort
+#+begin_src sh :results output :exports both 
+./src/parallelQuicksort
+#+end_src
 
+#+RESULTS:
+: Sequential quicksort took: 0.224542 sec.
+: Parallel quicksort took: 0.187741 sec.
+: Built-in quicksort took: 0.246872 sec.
 
-** Générateur de test aléatoire
+*** Machine 2 (Antoine Delise) 
 
-Randomise les tests à faire:
-Les test sont indiqué en paramètre (syntaxe: ./script/test.sh 1000 2000 3000 ...)
-Créer une case de tableau 2D pour chaque type de test
-Choisi aléatoirement un test et l'éxecute
+#+begin_src sh :results output :exports both 
+uname -a
+#+end_src
+
+#+RESULTS:
+: Linux Machine 4.6.0-kali1-amd64 #1 SMP Debian 4.6.4-1kali1 (2016-07-21) x86_64 GNU/Linux
+
+#+begin_src
+cat /proc/meminfo > Infos/Machine/meminfo.txt
+#+end_src
+
+#+begin_src
+cat /proc/cpuinfo > Infos/Machine/cpuinfo.txt
+#+end_src
+
+#+begin_src sh :results output :exports both 
+gcc --version
+#+end_src
+
+#+RESULTS:
+: gcc (Debian 6.2.0-10) 6.2.0 20161027
+: Copyright (C) 2016 Free Software Foundation, Inc.
+: This is free software; see the source for copying conditions.  There is NO
+: warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Test simple du quicksort
+#+begin_src sh :results output :exports both 
+./src/parallelQuicksort
+#+end_src
+
+#+RESULTS:
+: Sequential quicksort took: 0.224542 sec.
+: Parallel quicksort took: 0.187741 sec.
+: Built-in quicksort took: 0.246872 sec.
+
+** Expérimentations séparées
+
+*** Notre expérience
+
+On cherche a randomiser au maximum les tests
+Les différents tests sont indiqués en paramètres lors de l'éxécution du fichier de test. C'est à dire qu'on peut réaliser un quantité infinie de tests. Chaque paramètre est un entier qui définit la tailles des tableaux utilisés lors de ce test.
+L'éxécution "./script/test.sh 1000" réalisera un seul test avec des tableaux de tailles 1000, "./script/test.sh 1000 2000" réalisera un test avec des tableaux de taille 1000 et un second test avec des tableaux de taille 2000. 
+Cela permet de créer deux tableaux à une dimension correspondant dont l'indice correspond d'un côté à la taille des tableaux de tests et de l'autre au nombre de tests à faire pour cette taille.
+On choisit ensuite aléatoirement une taille de tableaux parmis celles qui doivent encore être testées jusqu'à ce qu'il n'y ait plus de test à effectué.
+
 État final: Le tableau est rempli de $ma (nombre de test à faire par type, défini ici à 5)
 Le script utilise le mini-programme "rand" qui génère un nombre aléatoire à partir d'un seed (en utilisant la fonction rand de la libc), afin de générer un meilleur aléatoire.
 #+begin_src perl :results output raw :exports both :tangle scripts/mkdir -p $OUTPUT_DIRECTORY
