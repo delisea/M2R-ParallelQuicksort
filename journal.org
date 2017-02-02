@@ -84,13 +84,19 @@ uname -a
 #+RESULTS:
 : Linux deliseport-GP60-2QE 4.4.0-53-generic #74-Ubuntu SMP Fri Dec 2 15:59:10 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
 
-#+begin_src
+#+begin_src sh :results output raw :exports both
 cat /proc/meminfo > Infos/deliseport-FP60-2QE/meminfo.txt
 #+end_src
 
-#+begin_src
+#+RESULTS:
+[[file:Infos/deliseport-FP60-2QE/meminfo.txt]]
+
+#+begin_src sh :results output raw :exports both 
 cat /proc/cpuinfo > Infos/deliseport-FP60-2QE/cpuinfo.txt
 #+end_src
+
+#+RESULTS:
+[[file:Infos/deliseport-FP60-2QE/cpuinfo.txt]]
 
 #+begin_src sh :results output :exports both 
 gcc --version
