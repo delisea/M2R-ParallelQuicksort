@@ -272,9 +272,10 @@ Ici le point de croisement des courbes se situe aux alentours de 300000 mais il 
 [[file:data/Machine_2017-02-02/measurements_18:26_wide.png]]
 
 
- et moyennes valeurs sont beaucoup moins efficace pour la version parallèle. Mais à partir de 1500000 valeurs les performances très vite sont beaucoup plus éfficaces pour cette dernière jusque 60% du temps des autres algorythme à partir de 10^7.
+Sur cette machine une fois encore les performmances sur de petites tableaux sont moins bonne pour la version parrallêle et meilleur pour les grands tableaux.
 
 
 
-
-
+*** Machine comparison
+La Machine avec plus de coeur profite plus rapidement du parrallêlise puisque le seuil d'inversion est à 400000 aulieu de 1000000, mais étonnament on observe que pour les très hautes valeurs la machine 2 est plus rapide 1.5s contre environ 1.7s pour la machine 1 ce qui est étrange puisque la machine 1 à deux fois plus de coeur que la machine 2. Il y a donc des paramètres autres qui entre en compte (tel que l'os qui est différentes: kali contre ubuntu qui peuvent gérer différement leurs ressources). Néanmoins dans les deux cas la conclusion générale sur cette algorithme reste:
+L'algorithme ParallelQuicksort est beaucoup moins performant pour de petites valeurs et plus pour de bonnes valeurs mais ce seuil est très dépendant de la machine utilisé.
