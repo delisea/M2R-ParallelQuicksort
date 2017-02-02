@@ -4,7 +4,7 @@
 #+AUTHOR:      Hugo Amodru-Favin, Antoine Delise
 #+LANGUAGE:    fr
 #+TAGS: IMPORTANT(i) TEST(t) DEPRECATED(d) noexport(n)
-
+*** Compte Rendu de Hugo Amodru-Favin Antoine Delise
 * Project Overview
 This project aims at providing an efficient multi-threaded
 implementation of the QuickSort algorithm on multi-core machines. This
