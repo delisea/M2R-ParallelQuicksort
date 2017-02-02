@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #+STARTUP: overview indent inlineimages
-#+TITLE:       Compte Rendu de Hugo Amodru-Favin Antoine Delise: Multi-Threaded Version of Quicksort
+#+TITLE:       Compte Rendu de Hugo Amodru-Favin & Antoine Delise: Multi-Threaded Version of Quicksort
 #+AUTHOR:      Hugo Amodru-Favin, Antoine Delise
 #+LANGUAGE:    fr
 #+TAGS: IMPORTANT(i) TEST(t) DEPRECATED(d) noexport(n)
@@ -19,7 +19,10 @@ comprises a set of experiments and the directory name is based on the
 machine name and on the date.
 * Expérimentation
 ** Présentation de notre étude
-Pour observer l'impact du matériel et du système d'exploitation sur les performances du quicksort. Nos deux machines ne tournent pas sur le même système d'exploitation, ont un processeur et une ram différentes.
+Nous avons décidé de travailler en binôme pour observer l'impact du matériel et du système d'exploitation sur les performances du quicksort. Nos deux machines ne tournent pas sur le même système d'exploitation, et ont un processeur et une ram différentes.
+
+Ne nous intéresserons pas à l'impact de la situation dans lequel les tests sont effectués (machines branchées au secteur ou non, autres processus en cours d'éxécution). Pour chacun de nos tests, nos machines seront branchées au secteur et ne feront aucune autre actions en simultané.
+
 Dans un premier temps, nous effectuerons la même expérience sur les deux machines différentes. On analysera les résultats obtenus indépendemment de la machine avant de les comparer pour conclure sur les performances machines.
 
 Nous commencons d'abord par réaliser un make du programme de base du quicksort :
@@ -119,7 +122,7 @@ Test simple du quicksort
 : Built-in quicksort took: 0.211146 sec.
 
 ** Conclusion courte sur la différence entre machines pour le premier test
-
+On remarque déjà une différence entre les deux machines sur la vitesse du parallel quicksort. La machine 1 possède 8 coeurs et a mis 0.18s pour réaliser ce quicksort alors que la machine 2 ne possède que 4 coeurs, ce qui explique qu'elle aie mis 0.41s soit environ le double du temps.
 
 ** Expérimentations séparées
 
@@ -202,8 +205,8 @@ sort -k1n,1n "${FILENAME}_wide.csv" > "${FILENAME}_wide_sorted.csv"
 
 
 * Un meilleur indice de visualisation: la moyenne
-Calcule des valeurs moyennes:
-(On récupère les lignes commençant par "$VALTEST," (ex:1000,) avec sed puis on calcul les moyennes par lignes avec la commande awk).
+Calcul des valeurs moyennes:
+(On récupère les lignes commençant par "$VALTEST," (ex:1000,) avec sed puis on calcule les moyennes par ligne avec la commande awk).
 #+begin_src perl :results output raw :exports both :tangle scripts/
 echo Size, Seq, Par, Libc > "${FILENAME}_wide_mean.csv"
 
@@ -249,7 +252,7 @@ Test très grandes valeurs
 [[file:data/deliseport-GP60-2QE_2017-01-20/measurements_08:20_wide.png]]
 
 
-On peut voir que les performances sur des petites et moyennes valeurs sont beaucoup moins efficace pour la version parallèle. Mais à partir de 1500000 valeurs les performances très vite sont beaucoup plus éfficaces pour cette dernière jusque 60% du temps des autres algorythme à partir de 10^7.
+On peut voir que les performances sur des petites et moyennes valeurs sont moins bonnes pour la version parallèle. Mais à partir de 1500000 valeurs, les performances sont rapidement meilleures pour cette dernière allant jusqu'à 60% du temps des autres algorithmes à partir de 10^7 valeurs.
 
 *** A simple plot with gnuplot Machine 1
 Test petites valeurs
@@ -265,16 +268,14 @@ Test très grandes valeurs
 #+RESULTS:
 [[file:data/Machine_2017-02-02/measurements_18:06_wide.png]]
 
-On peut voir que les performances sur des petites valeurs sont beaucoup moins bonnes pour le parrallelisé que pour les autres.
-Ici le point de croisement des courbes se situe aux alentours de 300000 mais il n'est pas vraiment visible. Il faut donc un test suplémentaire:
+On peut voir que les performances sur des petites valeurs sont beaucoup moins bonnes pour le quicksort parrallelisé que pour les autres.
+Ici le point de croisement des courbes se situe aux alentours de 300000 mais il n'est pas vraiment visible sur ces graphes. Il faut donc réaliser un test supplémentaire:
 #+RESULTS:
 [[file:data/Machine_2017-02-02/measurements_18:26_wide.png]]
 
-
-Sur cette machine une fois encore les performmances sur de petites tableaux sont moins bonne pour la version parrallêle et meilleur pour les grands tableaux.
-
+Sur cette machine une fois encore les performmances sur de petites tableaux sont moins bonnes pour la version parrallêle mais meilleures pour de grands tableaux. La hiérarchie s'inverse entre 300000 et 500000 valeurs, le parallel quicksort devient alors plus performant.
 
 
 *** Machine comparison
-La Machine avec plus de coeur profite plus rapidement du parrallêlise puisque le seuil d'inversion est à 400000 aulieu de 1000000, mais étonnament on observe que pour les très hautes valeurs la machine 2 est plus rapide 1.5s contre environ 1.7s pour la machine 1 ce qui est étrange puisque la machine 1 à deux fois plus de coeur que la machine 2. Il y a donc des paramètres autres qui entre en compte (tel que l'os qui est différentes: kali contre ubuntu qui peuvent gérer différement leurs ressources). Néanmoins dans les deux cas la conclusion générale sur cette algorithme reste:
-L'algorithme ParallelQuicksort est beaucoup moins performant pour de petites valeurs et plus pour de bonnes valeurs mais ce seuil est très dépendant de la machine utilisé.
+La Machine avec plus de coeur profite plus rapidement du parrallèlisme puisque le seuil d'inversion est à 400000 au lieu de 1000000, mais étonnamment, on observe que pour les très hautes valeurs la machine 2 est plus rapide (1.5s) contre environ (1.7s) pour la machine 1 ce qui est étrange puisque la machine 1 possède deux fois plus de coeur que la machine 2. Rappelons que la machine 1 possède 8GB de RAM contre 4GB pour la machine 2, et que le processeur est un Intel i7 contre un Intel i5. Il y a donc des paramètres autres qui entre en compte. Ici, il s'agit probablement du système d'exploitation. Kali Linux et Ubuntu peuvent gérer différemment leurs ressources. Quoiqu'il en soit, la conclusion générale sur cette algorithme reste inchangée :
+L'algorithme ParallelQuicksort est beaucoup moins performant pour de petites valeurs mais plus performant pour de grandes valeurs, le seuil où les performances s'inversent entre les algorithme dépend cependant des machines et des conditions dans lesquels ces tests sont réalisés.
