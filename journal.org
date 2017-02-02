@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 #+STARTUP: overview indent inlineimages
 #+TITLE:       Laboratory Notebook for a Multi-Threaded Version of Quicksort
-#+AUTHOR:      Arnaud Legrand
-#+LANGUAGE:    en
+#+AUTHOR:      Antoine Delise
+#+LANGUAGE:    fr
 #+TAGS: IMPORTANT(i) TEST(t) DEPRECATED(d) noexport(n)
 
 * Project Overview
@@ -19,6 +19,72 @@ This is where raw experimental data should go. Each directory entry
 comprises a set of experiments and the directory name is based on the
 machine name and on the date.
 
+** info/
+
+PROCO
+
+uname -a
+Linux deliseport-GP60-2QE 4.4.0-53-generic #74-Ubuntu SMP Fri Dec 2 15:59:10 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+
+
+
+cat /proc/meminfo
+MemTotal:        3963440 kB
+MemFree:          237096 kB
+MemAvailable:    1141692 kB
+Buffers:          154264 kB
+Cached:           940616 kB
+SwapCached:         2032 kB
+Active:          2087652 kB
+Inactive:        1231500 kB
+Active(anon):    1549368 kB
+Inactive(anon):   743524 kB
+Active(file):     538284 kB
+Inactive(file):   487976 kB
+Unevictable:          56 kB
+Mlocked:              56 kB
+SwapTotal:       3998204 kB
+SwapFree:        3979788 kB
+Dirty:              2544 kB
+Writeback:             0 kB
+AnonPages:       2218212 kB
+Mapped:           282388 kB
+Shmem:             68620 kB
+Slab:             268736 kB
+SReclaimable:     164424 kB
+SUnreclaim:       104312 kB
+KernelStack:        9728 kB
+PageTables:        41104 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     5979924 kB
+Committed_AS:    6837664 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:    626688 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      281588 kB
+DirectMap2M:     3829760 kB
+DirectMap1G:           0 kB
+
+
+gcc --version
+gcc (Ubuntu 5.4.0-6ubuntu1~16.04.4) 5.4.0 20160609
+Copyright (C) 2015 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+
 
 ** Générateur de test aléatoire
 
@@ -27,13 +93,14 @@ Les test sont indiqué en paramètre (syntaxe: ./script/test.sh 1000 2000 3000 .
 Créer une case de tableau 2D pour chaque type de test
 Choisi aléatoirement un test et l'éxecute
 État final: Le tableau est rempli de $ma (nombre de test à faire par type, défini ici à 5)
+Le script utilise le mini-programme "rand" qui génère un nombre aléatoire à partir d'un seed (en utilisant la fonction rand de la libc), afin de générer un meilleur aléatoire.
 #+begin_src perl :results output raw :exports both :tangle scripts/mkdir -p $OUTPUT_DIRECTORY
 TOUTPUT_FILE=$OUTPUT_DIRECTORY/measurements_`date +%R`
 OUTPUT_FILE=$TOUTPUT_FILE.txt
 
 touch $OUTPUT_FILE
 
-
+let "randy = $(./scripts/rand 42)"
 declare -A tes
 declare -A tit
 let "j = 0"
@@ -52,7 +119,8 @@ let "k = $ma * $j"
 while [ $k -ne 0 ]; do
 
 # choix du test aléatoirement
-let "val = $RANDOM % $si"
+let "randy = $(./scripts/rand $randy)"
+let "val = $randy % $si"
 let "i = 0"
 while [ $val -ne 0 ]; do
 	if [ ${tes[${i}]} -ne $ma ]
