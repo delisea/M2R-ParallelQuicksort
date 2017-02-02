@@ -46,11 +46,14 @@ cat /proc/meminfo > Infos/Machine/meminfo.txt
 #+end_src
 
 #+RESULTS:
-[[file:data/deliseport-GP60-2QE_2017-01-20/measurements_08:20_wide.png]]
+[[file:Infos/Machine/meminfo.txt]]
 
-#+begin_src
+#+begin_src sh :results output raw :exports both 
 cat /proc/cpuinfo > Infos/Machine/cpuinfo.txt
 #+end_src
+
+#+RESULTS:
+[[file:Infos/Machine/cpuinfo.txt]]
 
 #+begin_src sh :results output :exports both 
 gcc --version
