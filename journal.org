@@ -75,14 +75,14 @@ uname -a
 #+end_src
 
 #+RESULTS:
-: Linux Machine 4.6.0-kali1-amd64 #1 SMP Debian 4.6.4-1kali1 (2016-07-21) x86_64 GNU/Linux
+: Linux deliseport-GP60-2QE 4.4.0-53-generic #74-Ubuntu SMP Fri Dec 2 15:59:10 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
 
 #+begin_src
-cat /proc/meminfo > Infos/Machine/meminfo.txt
+cat /proc/meminfo > Infos/deliseport-FP60-2QE/meminfo.txt
 #+end_src
 
 #+begin_src
-cat /proc/cpuinfo > Infos/Machine/cpuinfo.txt
+cat /proc/cpuinfo > Infos/deliseport-FP60-2QE/cpuinfo.txt
 #+end_src
 
 #+begin_src sh :results output :exports both 
@@ -90,10 +90,11 @@ gcc --version
 #+end_src
 
 #+RESULTS:
-: gcc (Debian 6.2.0-10) 6.2.0 20161027
-: Copyright (C) 2016 Free Software Foundation, Inc.
-: This is free software; see the source for copying conditions.  There is NO
-: warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+:gcc (Ubuntu 5.4.0-6ubuntu1~16.04.4) 5.4.0 20160609
+:Copyright (C) 2015 Free Software Foundation, Inc.
+:This is free software; see the source for copying conditions.  There is NO
+:warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
 
 Test simple du quicksort
 #+begin_src sh :results output :exports both 
@@ -101,9 +102,9 @@ Test simple du quicksort
 #+end_src
 
 #+RESULTS:
-: Sequential quicksort took: 0.224542 sec.
-: Parallel quicksort took: 0.187741 sec.
-: Built-in quicksort took: 0.246872 sec.
+:Sequential quicksort took: 0.214918 sec.
+:Parallel quicksort took: 0.419729 sec.
+:Built-in quicksort took: 0.211146 sec.
 
 ** Expérimentations séparées
 
