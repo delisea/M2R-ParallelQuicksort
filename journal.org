@@ -40,9 +40,13 @@ uname -a
 #+RESULTS:
 : Linux Machine 4.6.0-kali1-amd64 #1 SMP Debian 4.6.4-1kali1 (2016-07-21) x86_64 GNU/Linux
 
-#+begin_src
+
+#+begin_src sh :results output raw :exports both 
 cat /proc/meminfo > Infos/Machine/meminfo.txt
 #+end_src
+
+#+RESULTS:
+[[file:data/deliseport-GP60-2QE_2017-01-20/measurements_08:20_wide.png]]
 
 #+begin_src
 cat /proc/cpuinfo > Infos/Machine/cpuinfo.txt
@@ -90,10 +94,10 @@ gcc --version
 #+end_src
 
 #+RESULTS:
-:gcc (Ubuntu 5.4.0-6ubuntu1~16.04.4) 5.4.0 20160609
-:Copyright (C) 2015 Free Software Foundation, Inc.
-:This is free software; see the source for copying conditions.  There is NO
-:warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+: gcc (Ubuntu 5.4.0-6ubuntu1~16.04.4) 5.4.0 20160609
+: Copyright (C) 2015 Free Software Foundation, Inc.
+: This is free software; see the source for copying conditions.  There is NO
+: warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 
 Test simple du quicksort
@@ -102,9 +106,9 @@ Test simple du quicksort
 #+end_src
 
 #+RESULTS:
-:Sequential quicksort took: 0.214918 sec.
-:Parallel quicksort took: 0.419729 sec.
-:Built-in quicksort took: 0.211146 sec.
+: Sequential quicksort took: 0.214918 sec.
+: Parallel quicksort took: 0.419729 sec.
+: Built-in quicksort took: 0.211146 sec.
 
 ** Expérimentations séparées
 
